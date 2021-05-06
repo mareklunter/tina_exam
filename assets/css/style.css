@@ -1,0 +1,146 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: whitesmoke;
+  }
+
+  main {
+      padding: 70px 0 0;
+      min-height: 100vh;
+  }
+
+  footer, header {
+    background: #011627;
+    color: white;
+  }
+
+  header {
+    padding: 5px 5% 10px;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+
+  header div{
+      padding: 10px;
+  }
+  
+  header a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  header a:hover {
+    color: #2EC4B6;
+  }
+
+  footer {
+    padding: 10px;
+    font-size: clamp(.6rem, 3vw, 1.2rem);
+
+  }
+  
+  h1 {
+    margin: 0;
+    padding: 10px 0 0;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    background: rgb(54, 53, 56);
+    padding: 5px 0;
+  }
+  
+  a {
+      text-decoration: none;
+  }
+
+  nav ul a{
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav ul a{
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav ul a:hover{
+    color: bisque;
+    text-decoration: underline;
+  }
+  
+  .selected {
+    color: rgb(250, 214, 169);
+  }
+  
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.big-box {
+    height: clamp(20rem, 40vw, 35rem);
+    transition: all .5s;
+    color: #011627;
+    position: relative;
+}
+
+.big-box:hover {
+    color: #011627;
+}
+
+.big-box::after {
+    content: "";
+    background: url("../images/map_background.jpg");
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    border-radius: 20px;
+    transition: all .5s;
+
+  }
+
+.big-box:hover:after {
+    opacity: 0.6;
+}
+
+
+.small-box-wrapper {
+    height: clamp(20rem, 40vw, 35rem);
+}
+
+.small-box-wrapper>div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.small-box-wrapper a {
+    background-color: rgb(255, 222, 152);
+    color: #011627;
+    transition: all .5s;
+}
+
+.small-box-wrapper a:hover {
+    background-color: #FF9F1C;
+}
+
+
+@media screen and (max-width: 768px) {
+    .small-box-wrapper>div {
+        padding: 2%;
+    }
+}
+
+/* colors https://coolors.co/011627-fdfffc-2ec4b6-e71d36-ff9f1c */
