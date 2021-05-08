@@ -19,6 +19,24 @@ function blueCar() {
   });
 }
 
+function pinkCar() {
+  $("#case_pink .follow-path").css("top", "-55px");
+  $("#case_pink .follow-path").css("left", "-31px");
+
+  var path = anime.path('#case_pink .motion-path-demo path');
+
+  anime({
+    targets: '#case_pink .motion-path-demo #pinkCar',
+    translateX: path('x'),
+    translateY: path('y'),
+    rotate: path('angle'),
+    easing: 'linear',
+    duration: 2500,
+    complete: function() {
+      $('#pinkCar').hide();
+    }
+  });
+}
 
 function redCar() {
   $("#case_red .follow-path").css("top", "-35px");
@@ -75,7 +93,7 @@ function result(order, correctOrder) {
 //start button
 $('#start').on('click', function () {
   let order = new Array();
-  let correctOrder = ["blue", "green", "red"]
+  let correctOrder = ["pink", "green", "red", "blue"]
 
   $('#demo').attr('disabled','disabled');
   $('#start').attr('disabled','disabled');
@@ -85,7 +103,20 @@ $('#start').on('click', function () {
   $('#blueCar').on('click', function () {
     blueCar();
     order.push("blue");
-    if (order.length >= 3) {
+    if (order.length >= 4) {
+      result(order, correctOrder)
+    }
+
+    //remove this listener
+    $(this).css('cursor', 'default');
+    $(this).off('click');
+  });
+
+  //pink
+  $('#pinkCar').on('click', function () {
+    pinkCar();
+    order.push("pink");
+    if (order.length >= 4) {
       result(order, correctOrder)
     }
 
@@ -98,7 +129,7 @@ $('#start').on('click', function () {
   $('#redCar').on('click', function () {
     redCar();
     order.push("red");
-    if (order.length >= 3) {
+    if (order.length >= 4) {
       result(order, correctOrder)
     }
 
@@ -111,7 +142,7 @@ $('#start').on('click', function () {
   $('#greenCar').on('click', function () {
     greenCar();
     order.push("green");
-    if (order.length >= 3) {
+    if (order.length >= 4) {
       result(order, correctOrder)
     }
 
@@ -127,7 +158,7 @@ $('#demo').on('click', function () {
   $('#start').attr('disabled','disabled');
   $('#demo').attr('disabled','disabled');
 
-  blueCar();
+  pinkCar();
 
   setTimeout(
     function () {
@@ -139,10 +170,15 @@ $('#demo').on('click', function () {
       redCar();
     }, 2600);
 
+  setTimeout(
+    function () {
+      blueCar();
+    }, 3900);
+
 
   setTimeout(
     function () {
       location.reload();
-    }, 5000);
+    }, 6300);
 
 });

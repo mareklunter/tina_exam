@@ -8,7 +8,7 @@ main {
   margin: 50px 0;
 }
 
- 
+
 footer, header {
   background: #011627;
   color: white;
@@ -144,20 +144,36 @@ nav ul a:hover{
   z-index: 10;
 }
 
-
 /* GREEN */
 #case_green .motion-path {
-  width: 60px;
+  width: 350px;
   bottom: 25.5%;
-  right: 46%;
+  right: 44.6%;
 }
 
 #case_green .follow-path {
   bottom: 0px;
-  left: 0px;
+  right: 8px;
 }
 
 #greenCar {
   z-index: 10;
   transform: rotate(-90deg);
+}
+
+/* pink */
+#case_pink .motion-path {
+  width: 60px;
+  top: 28.5%;
+  left: 45.5%;
+}
+
+#case_pink .follow-path {
+  top: -25px;
+  left: -5px;
+}
+
+#pinkCar {
+  z-index: 10;
+  transform: rotate(90deg);
 }
