@@ -29,10 +29,13 @@ $(function () {
         accessToken: 'pk.eyJ1Ijoid2VidGUtYnMiLCJhIjoiY2tvOTBkcTAwMG1nazJ2czJndXp1OGh4cSJ9.hbfxpNbBnzPxbv36oZfZeA'
     }).addTo(map);
 
+    draw(0, 0.5, 0.5, 0.00, 0.5, 0);
+
     var route = L.polyline([], {color: 'red'}).addTo(map);
     var marker = null;
     var previousLocation = {timestamp: "", latitude: "", longitude: ""};
     var speed = null;
+    var distanceTravelled = 0;
 
     var eventSource = new EventSource("http://vmzakova.fei.stuba.sk/tina/route1.php");
     eventSource.onmessage = function(event) {
@@ -55,9 +58,11 @@ $(function () {
         route.addLatLng([currentLocation.latitude, currentLocation.longitude]);
 
         speed = getActualSpeed(previousLocation, currentLocation);
-        previousLocation = currentLocation;
+        distanceTravelled += getDistance(previousLocation, currentLocation);
 
-        console.log(speed);
+        draw(speed/200, 0.5, 0.5, parseFloat(distanceTravelled.toFixed(2)), 0.5, 0);
+
+        previousLocation = currentLocation;
 
         if (!inBounds(map.getBounds(), route.getBounds()) && !inBounds(map.getBounds(), [currentLocation.latitude, currentLocation.longitude])){
             map.fitBounds(route.getBounds());

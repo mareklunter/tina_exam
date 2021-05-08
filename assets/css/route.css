@@ -8,3 +8,7 @@
     height: 90vh;
     /*margin: auto;*/
 }
+
+.bg-grey {
+    background-color: #e4e4e4;
+}

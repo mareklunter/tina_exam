@@ -37,9 +37,22 @@
 
 <div class="container-fluid">
 
-<div id="map"></div>
+    <div class="row">
+
+        <div class="col-8">
+            <div id="map"></div>
+        </div>
+
+        <div class="col-4 text-center bg-grey">
+            <div id="speedometer" class="py-3 text-center">
+                <div style="display: none;"><img id="sprite" src="../assets/images/icons.svg"></div>
+                <canvas id="speedmeter-canvas" width="425" height="210"></canvas>
+            </div>
+        </div>
+    </div>
 
 </div>
-
+<script src="../speedmeter/fraction.min.js"></script>
+<script src="../speedmeter/speedometer.js"></script>
 </body>
 </html>
