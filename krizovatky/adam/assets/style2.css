@@ -163,14 +163,14 @@ nav ul a:hover{
 
 /* pink */
 #case_pink .motion-path {
-  width: 60px;
-  top: 28.5%;
-  left: 45.5%;
+  width: 470px;
+  top: -22.5%;
+  left: 29%;
 }
 
 #case_pink .follow-path {
-  top: -25px;
-  left: -5px;
+  top: 230px;
+  left: 215px;
 }
 
 #pinkCar {
