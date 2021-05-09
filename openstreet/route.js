@@ -41,7 +41,71 @@ $(function() {
     longitude: ""
   };
   var speed = null;
+  var overAllSpeed = 0;
   var distanceTravelled = 0;
+  var x = 0;
+
+  var chart = document.getElementById("myChart");
+  var data = {
+    labels: [],
+    datasets: [
+      {
+        label: "Rýchlosť",
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: "rgba(191, 59, 61,0.4)",
+        borderColor: "rgba(191, 59, 61,1)",
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: "rgba(191, 59, 61,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(191, 59, 61,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 3,
+        pointHitRadius: 10,
+        data: [],
+      }
+    ],
+  };
+
+  function adddata(speed, timestamp) {
+    if(speed !== null) {
+      overAllSpeed += parseFloat(speed);
+      if(x !== 0) {
+        average.refresh(overAllSpeed / x);
+      }
+      myLineChart.data.datasets[0].data[x] = speed;
+      let d = new Date(timestamp * 1000);
+      d = d.toLocaleString();
+      myLineChart.data.labels[x] = d.substring(d.indexOf(',')+1);
+      x++
+      myLineChart.update();
+    }
+  }
+
+  var option = {
+    showLines: true,
+  };
+
+  var myLineChart = Chart.Line(chart, {
+    data: data,
+    options: option,
+  });
+
+  var average = new JustGage({
+    id: "average",
+    value: 0,
+    min: 0,
+    max: 200,
+    label: "Priemerná rýchlosť",
+    decimals: 2,
+    symbol: " km/h"
+  });
 
   var eventSource = new EventSource("http://vmzakova.fei.stuba.sk/tina/route1.php");
   eventSource.onmessage = function(event) {
@@ -69,6 +133,7 @@ $(function() {
     distanceTravelled += getDistance(previousLocation, currentLocation);
 
     draw(speed / 200, 0.5, 0.5, parseFloat(distanceTravelled.toFixed(2)), 0.5, 0);
+    adddata(speed, currentLocation.timestamp);
 
     previousLocation = currentLocation;
 
@@ -90,10 +155,7 @@ $(function() {
     let secPosition = sec * 360 / 60;
 
     function runClock() {
-      hrPosition += (30 / 3600);
-      minPosition += (6 / 60);
-      secPosition += 6;
-      if(secPosition <= 6) {
+      if(secPosition === 0) {
         SECONDHAND.style.transition = "transform 0s ease-in-out";
       } else {
         SECONDHAND.style.transition = "transform .5s ease-in-out";
@@ -101,6 +163,10 @@ $(function() {
       HOURHAND.style.transform = "rotate(" + hrPosition + "deg)";
       MINUTEHAND.style.transform = "rotate(" + minPosition + "deg)";
       SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
+
+      hrPosition += (30 / 3600);
+      minPosition += (6 / 60);
+      secPosition += 6;
     }
 
     runClock();

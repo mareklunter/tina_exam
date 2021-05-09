@@ -26,6 +26,12 @@
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/route.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+	<script src="https://www.jqueryscript.net/demo/Javascript-Animated-Gauges-Plugin-JustGage/justgage.min.js"></script>
 </head>
 <body>
 <header>
@@ -44,32 +50,36 @@
         </div>
 
         <div class="col-4 text-center bg-grey">
-            <div id="speedometer" class="py-3 text-center">
-                <div style="display: none;"><img id="sprite" src="../assets/images/icons.svg"></div>
-                <canvas id="speedmeter-canvas" width="425" height="210"></canvas>
-            </div>
-
-            <div class="clockbox">
-              <svg id="clock" xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
-                  <g id="face">
-                      <circle class="circle" cx="300" cy="300" r="253.9"/>
-                      <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
-                      <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
-                  </g>
-                  <g id="hour">
-                      <path class="hour-hand" d="M300.5 298V142"/>
-                      <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                  </g>
-                  <g id="minute">
-                      <path class="minute-hand" d="M300.5 298V67"/>
-                      <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                  </g>
-                  <g id="second">
-                      <path class="second-hand" d="M300.5 350V55"/>
-                      <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                  </g>
-              </svg>
+          <div class="clockbox">
+            <svg id="clock" xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
+                <g id="face">
+                    <circle class="circle" cx="300" cy="300" r="253.9"/>
+                    <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
+                    <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
+                </g>
+                <g id="hour">
+                    <path class="hour-hand" d="M300.5 298V142"/>
+                    <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                </g>
+                <g id="minute">
+                    <path class="minute-hand" d="M300.5 298V67"/>
+                    <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                </g>
+                <g id="second">
+                    <path class="second-hand" d="M300.5 350V55"/>
+                    <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                </g>
+            </svg>
           </div>
+
+          <div id="speedometer" class="py-3 text-center">
+              <div style="display: none;"><img id="sprite" src="../assets/images/icons.svg"></div>
+              <canvas id="speedmeter-canvas" width="425" height="210"></canvas>
+          </div>
+
+    			<div id="average"></div>
+
+          <canvas id="myChart" class="chart"></canvas>
         </div>
     </div>
 
