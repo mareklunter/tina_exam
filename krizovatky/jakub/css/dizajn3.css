@@ -4,6 +4,14 @@ body {
     font-family: sans-serif;
   }
   
+  .description {
+    border: 3px solid #202020;
+    display: inline-block;
+    background-color: rgba(247, 160, 62, 0.473);
+    padding: 10px;
+    margin-top: 20px;
+  }
+
   main {
     margin: 50px 0;
   }
@@ -77,6 +85,11 @@ body {
     height: 100px;
     padding-top: 40px;
 }
+
+.strong {
+  font-weight: bolder;
+}
+
 
 .telo {
     background-color: #6495ED;
