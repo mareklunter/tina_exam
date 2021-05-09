@@ -1,0 +1,47 @@
+/*.wrapper {*/
+/*    position:relative;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*}*/
+
+.car {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+#blue-car {
+    position: absolute;
+    left: 29%;
+    top: -30px;
+}
+
+#red-car {
+    position: absolute;
+    left: 29%;
+    top: -30px;
+}
+
+#green-car {
+    position: absolute;
+    left: 29%;
+    top: -30px;
+}
+
+
+.description {
+    border: 3px solid #202020;
+    display: inline-block;
+    background-color: rgba(247, 160, 62, 0.473);
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.controls {
+    border: 1px solid #202020;
+    border-radius: 10px;
+    padding: 20px 30px;
+    background: rgb(212, 197, 199);
+    width: 300px;
+    margin: 0 auto;
+}
