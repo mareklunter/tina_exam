@@ -62,28 +62,33 @@ $(function () {
         }
     });
 
-    $('#blue-car').click(function () {
-        blueRide.play();
-        order.push('blue');
-        result();
-    });
 
-    $('#red-car').click(function () {
-        redRide.play();
-        order.push('red');
-        result();
-    });
+    $('#start').click(function () {
+        $('.car').css('cursor','pointer');
 
-    $('#green-car').click(function () {
-        greenRide.play();
-        order.push('green');
-        result();
-    });
+        $('#blue-car').click(function () {
+            blueRide.play();
+            order.push('blue');
+            result();
+        });
 
-    $('#purple-car').click(function () {
-        purpleRide.play();
-        order.push('purple');
-        result();
+        $('#red-car').click(function () {
+            redRide.play();
+            order.push('red');
+            result();
+        });
+
+        $('#green-car').click(function () {
+            greenRide.play();
+            order.push('green');
+            result();
+        });
+
+        $('#purple-car').click(function () {
+            purpleRide.play();
+            order.push('purple');
+            result();
+        });
     });
 
     function result(){
@@ -96,6 +101,14 @@ $(function () {
         }
     }
 
+    $('#demo').click(function () {
+        greenRide.play();
+        redRide.play();
+        setTimeout(function () {
+            purpleRide.play();
+            blueRide.play();
+        }, 2000);
+    });
 
 
 });

@@ -39,7 +39,7 @@ $(function () {
         translateY: greenPath('y'),
         rotate: greenPath('angle'),
         easing: 'linear',
-        duration: 4000,
+        duration: 6000,
         loop: false,
         autoplay: false,
         complete: function(anim) {
@@ -47,23 +47,34 @@ $(function () {
         }
     });
 
+    $('#start').click(function () {
+        $('.car').css('cursor','pointer');
 
-    $('#blue-car').click(function () {
+        $('#blue-car').click(function () {
+            blueRide.play();
+            order.push('blue');
+            result();
+        });
+
+        $('#red-car').click(function () {
+            redRide.play();
+            order.push('red');
+            result();
+        });
+
+        $('#green-car').click(function () {
+            greenRide.play();
+            order.push('green');
+            result();
+        });
+    });
+
+    $('#demo').click(function () {
         blueRide.play();
-        order.push('blue');
-        result();
-    });
-
-    $('#red-car').click(function () {
         redRide.play();
-        order.push('red');
-        result();
-    });
-
-    $('#green-car').click(function () {
-        greenRide.play();
-        order.push('green');
-        result();
+        setTimeout(function () {
+            greenRide.play();
+        }, 1500)
     });
 
     function result(){
